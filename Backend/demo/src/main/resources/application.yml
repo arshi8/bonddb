@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    password: 
+    url: jdbc:h2:desktop/h2data/sample
+    username: sa
