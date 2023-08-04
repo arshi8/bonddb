@@ -1,0 +1,22 @@
+.checkcolour{
+    color: var(--CustDBblue);
+}
+.main{
+    height:100%;
+    width:100vw;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bookanduserdetails{
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid black;
+    margin:2px;
+    background-color: yellowgreen;
+}
