@@ -1,5 +1,13 @@
 package com.example.demo.repositories;
 
-public class TradesRepo {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entity.Trades;
+
+
+public interface TradesRepo extends JpaRepository<Trades, Integer> {
+	
+	
 }

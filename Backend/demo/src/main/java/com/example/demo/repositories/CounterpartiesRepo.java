@@ -1,5 +1,13 @@
 package com.example.demo.repositories;
 
-public class CounterpartiesRepo {
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entity.Counterparties;
+
+
+public interface CounterpartiesRepo extends JpaRepository<Counterparties, Integer> {
+	
+	
 }
