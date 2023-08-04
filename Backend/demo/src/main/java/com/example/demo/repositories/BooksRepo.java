@@ -9,5 +9,5 @@ import com.example.demo.entity.Books;
 
 public interface BooksRepo extends JpaRepository<Books, Integer> {
 	
-	
+
 }

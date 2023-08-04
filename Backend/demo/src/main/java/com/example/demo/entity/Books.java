@@ -13,6 +13,7 @@ public class Books {
 	private int bookId;
 	@Column(name = "book_name")
 	private String bookName;
+	
 	public Books(int bookId, String bookName) {
 		super();
 		this.bookId = bookId;
@@ -30,4 +31,5 @@ public class Books {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
+	
 }

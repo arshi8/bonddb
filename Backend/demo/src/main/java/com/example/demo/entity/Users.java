@@ -16,6 +16,7 @@ public class Users {
 	private String userEmail;
 	@Column(name = "user_role")
 	private String userRole;
+	
 	public Users(int userId, String userName, String userEmail, String userRole) {
 		super();
 		this.userId = userId;
