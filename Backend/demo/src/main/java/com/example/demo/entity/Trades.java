@@ -23,7 +23,9 @@ public class Trades {
 	private String type;
 	@Column(name = "trade_date")
 	private LocalDateTime tradeDate;
-	public Trades(int tradeId, int quantity, String status, int price, String type, LocalDateTime tradeDate) {
+	@Column(name = "book_id")
+	private int bookId;
+	public Trades(int tradeId, int quantity, String status, int price, String type, LocalDateTime tradeDate, int bookId) {
 		super();
 		this.tradeId = tradeId;
 		this.quantity = quantity;
@@ -31,6 +33,7 @@ public class Trades {
 		this.price = price;
 		this.type = type;
 		this.tradeDate = tradeDate;
+		this.bookId = bookId;
 	}
 	public int getTradeId() {
 		return tradeId;
@@ -68,4 +71,11 @@ public class Trades {
 	public void setTradeDate(LocalDateTime tradeDate) {
 		this.tradeDate = tradeDate;
 	}
+	public int getBookId() {
+		return bookId;
+	}
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+	
 }
