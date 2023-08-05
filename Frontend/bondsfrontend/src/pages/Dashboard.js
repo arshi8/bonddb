@@ -1,14 +1,56 @@
 import "./Dashboard.css"
-import JSONData from '../JSONData1/Trade.json'
+import TradeData from '../JSONData1/Trade.json'
+import BookData from '../JSONData1/Book.json'
+import BookUserData from '../JSONData1/BookUser.json'
+import CounterPartyData from '../JSONData1/CounterParty.json'
+import SecurityData from '../JSONData1/Security.json'
+import UserData from '../JSONData1/User.json'
+
+// use for debugging
+console.clear()
+console.log("App Start")
+
+let CurrentUserID = 1001
+let CurrentUser = UserData.find(element => element.Id == CurrentUserID)
+
+console.log(CurrentUser)
+
+function GroupTradesByBook(){
+   let Library = new Map()
+
+   TradeData.forEach(element => {
+      if(Library.has(element.BookId)){
+         Library.get(element.BookId).push(element)
+      }else{
+         Library.set(element.BookId,[element])
+      }
+   })
+   // returns a key value pair of (Book ID) => (List of Trades of that book)
+   return Library
+}
+
+// function AssignSecuritiesToTrades(selectedBookID, Library){
+//    let TradeList = Library.get()
+//    let TradeDetails = new Map()
+// }
+
+console.log(GroupTradesByBook())
+
 function Dashboard() {
+   
+
    return (
       <>
          <div className="main">
-            <div className="bookanduserdetails">
-               <h1>User details</h1>
+            <div className="userdetails">
+               <h2 id="usergreeting">Welcome, {CurrentUser.Name}!</h2>
+               <h2 id="userid">{CurrentUser.Id}</h2>
+               <h2 id="userrole">{CurrentUser.Role}</h2>
+               <h2 id="useremail">{CurrentUser.Email}</h2>
+               <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" width="40px"/>
             </div>
-            <div className="bookanduserdetails">
-               <h1>Selected books</h1>
+            <div className="bookselector">
+               <h1>book selector</h1>
             </div>
             <div className="tradedetails">
                <div className="listoftrades">
@@ -35,7 +77,7 @@ function Dashboard() {
                            <td>Otto</td>
                            <td>@mdo</td>
                         </tr> */}
-                        {JSONData.map((item) =>(
+                        {TradeData.map((item) =>(
                            <tr>
                               <th scope="row">{item.Id}</th>
                               <td>{item.BookId}</td>

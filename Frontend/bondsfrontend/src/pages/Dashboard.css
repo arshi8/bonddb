@@ -12,7 +12,17 @@
     overflow-x: hidden;
     margin:1vh;
 }
-.bookanduserdetails{
+.userdetails{
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: solid black;
+    margin:1vh;
+    background-color: yellowgreen;
+}
+.bookselector{
     height:100%;
     width:100%;
     display: flex;
