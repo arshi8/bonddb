@@ -14,6 +14,7 @@ import com.example.demo.repositories.TradesRepo;
 
 @Service
 public class TradesService {
+	@Autowired
 	private TradesRepo tradesrepo;
 	@Autowired
 	 public TradesService(TradesRepo traderepo) {
