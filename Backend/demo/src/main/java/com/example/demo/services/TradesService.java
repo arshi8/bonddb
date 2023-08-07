@@ -19,6 +19,7 @@ public class TradesService {
 	@Autowired
 	public TradesService(TradesRepo traderepo) {
 		super();
+	
 	}
 	
 

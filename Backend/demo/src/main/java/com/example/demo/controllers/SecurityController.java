@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +22,7 @@ import com.example.demo.services.SecuritiesService;
 public class SecurityController {
 	@Autowired
 	private SecuritiesService securitiesservice;
-	@GetMapping
+	@GetMapping("/")
 	 public List<Securities> findAll()
 	 {
 		 return this.securitiesservice.findAll();
@@ -49,6 +51,12 @@ public class SecurityController {
 		 
 		 return this.securitiesservice.findByMaturityDate(arg);
 	 }
+	 @PostMapping("/saveSecurity")
+	    public Securities saveSecurity(@RequestBody Securities securities){
+	        return this.securitiesservice.saveSecurity(securities);
+	    }
+	 
+
 	
 
 }

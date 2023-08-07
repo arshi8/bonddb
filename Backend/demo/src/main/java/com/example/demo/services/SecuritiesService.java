@@ -5,20 +5,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.entity.Securities;
+import com.example.demo.entity.Trades;
 import com.example.demo.repositories.SecuritiesRepo;
 
 @Service
 public class SecuritiesService {
+	@Autowired
 	private SecuritiesRepo securitiesrepo;
 	@Autowired
 	public SecuritiesService (SecuritiesRepo securitiesrepo)
 	{
 		super();
-		this.securitiesrepo= securitiesrepo;
+		
 	}
 
 	 public List<Securities> findBySecurityId(@PathVariable int arg)
@@ -44,6 +45,10 @@ public class SecuritiesService {
 		 
 		 return this.securitiesrepo.findByMaturityDate(arg);
 	 }
+	 public Securities saveSecurity(Securities s){
+	        return this.securitiesrepo.save(s);
+	    }
+	
 
 	public List<Securities> findAll() {
 		// TODO Auto-generated method stub
