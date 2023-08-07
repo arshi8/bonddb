@@ -28,6 +28,10 @@ public class Books {
 	public String getBookName() {
 		return bookName;
 	}
+	public Books() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
