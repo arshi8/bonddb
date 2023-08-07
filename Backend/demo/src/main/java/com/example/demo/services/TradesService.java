@@ -17,15 +17,13 @@ public class TradesService {
 	@Autowired
 	private TradesRepo tradesrepo;
 	@Autowired
-	 public TradesService(TradesRepo traderepo) {
-		// TODO Auto-generated constructor stub
+	public TradesService(TradesRepo traderepo) {
 		super();
 	}
 	
 
 	 public List<Trades> findByTradeId(@PathVariable int arg)
 	 {
-		 
 		 return this.tradesrepo.findByTradeId(arg);
 	 }
 
@@ -66,8 +64,16 @@ public class TradesService {
 	 }
 
 	public List<Trades> findAll() {
-		// TODO Auto-generated method stub
 		return this.tradesrepo.findAll();
 	}
+
+    public Trades saveTrade(Trades t){
+        return this.tradesrepo.save(t);
+    }
+
+	public String delTrades(int t){
+        this.tradesrepo.deleteById(t);
+		return "Deleted";
+    }
 	 
 }

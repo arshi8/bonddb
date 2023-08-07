@@ -4,8 +4,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +22,12 @@ import com.example.demo.services.TradesService;
 public class TradeController {
 	@Autowired
 	private TradesService tradesservice;
-	@GetMapping
+	
+	@GetMapping("/")
 	 public List<Trades> findAll()
-	 {
+	{
 		 return this.tradesservice.findAll();
-	 }
+	}
 	@GetMapping("/tradeId/{args}")
 	 public List<Trades> findByTradeId(@PathVariable int args)
 	 {
@@ -66,6 +70,16 @@ public class TradeController {
 		 
 		 return this.tradesservice.findByBookId(arg);
 	 }
+
+    @PostMapping("/saveTrade")
+    public Trades saveTrade(@RequestBody Trades trade){
+        return this.tradesservice.saveTrade(trade);
+    }
+
+	@DeleteMapping("/deleteTrade/{arg}")
+	public String delTrades(@PathVariable int arg){
+        return this.tradesservice.delTrades(arg);
+    }
 	
 	
 }
