@@ -48,6 +48,10 @@ public class SecuritiesService {
 	 public Securities saveSecurity(Securities s){
 	        return this.securitiesrepo.save(s);
 	    }
+	 
+	 public Securities updateSecurity(Securities s){
+	        return this.securitiesrepo.save(s);
+	    }
 	
 
 	public List<Securities> findAll() {

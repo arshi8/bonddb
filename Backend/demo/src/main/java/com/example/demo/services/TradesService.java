@@ -76,5 +76,9 @@ public class TradesService {
         this.tradesrepo.deleteById(t);
 		return "Deleted";
     }
+	public Trades update(Trades entity)
+	{
+		return this.tradesrepo.save(entity);
+	}
 	 
 }
