@@ -1,5 +1,14 @@
 spring:
   datasource:
-    password: 
-    url: jdbc:h2:desktop/h2data/sample
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
     username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+  # Ensure the following line is not present or set to "always" or "embedded"
+  initialization-mode: always

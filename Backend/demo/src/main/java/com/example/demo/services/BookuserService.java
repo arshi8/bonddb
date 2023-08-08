@@ -8,44 +8,43 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.demo.entity.Book;
 import com.example.demo.entity.BookUsers;
 import com.example.demo.entity.Securities;
 import com.example.demo.entity.Trades;
 import com.example.demo.repositories.BookUserRepo;
-import com.example.demo.repositories.BooksRepo;
 import com.example.demo.repositories.TradesRepo;
 
 @Service
-public class BooksService {
+public class BookuserService {
 	@Autowired
-	private BooksRepo booksrepo;
+	private BookUserRepo bookuserrepo;
 	@Autowired
-	public BooksService(BooksRepo booksrepo) {
+	public BookuserService(BookUserRepo bookuserrepo) {
 		super();
 	
 	}
+
 	
-	 public List<Book> findByBookId(@PathVariable int arg)
+	 public List<BookUsers> findByBookId(@PathVariable int arg)
 	 {
-		 return this.booksrepo.findByBookId(arg);
+		 return this.bookuserrepo.findByBookId(arg);
 	 }
-	public List<Book> findByBookName(String bookName)
-	{
-		 return this.booksrepo.findByBookName(bookName);
-		
-	}
+	 
 
 	 
-	public List<Book> findAll() 
+
+	public List<BookUsers> findAll() 
 	{
-		return this.booksrepo.findAll();
+		return this.bookuserrepo.findAll();
 	}
 
 
-
-	 public Book addBook(Book b){
-	        return this.booksrepo.save(b);
+	public List<BookUsers> findByUserId(@PathVariable int arg)
+		 {
+			 return this.bookuserrepo.findByUserId(arg);
+		 }
+	 public BookUsers addBookUser(BookUsers b){
+	        return this.bookuserrepo.save(b);
 	    }
     
 

@@ -4,20 +4,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table
-public class Books {
+@Table(name="books")
+@NoArgsConstructor
+public class Book {
 	@Id
 	@Column(name = "book_id")
 	private int bookId;
 	@Column(name = "book_name")
 	private String bookName;
-	public Books(int bookId, String bookName) {
-		super();
-		this.bookId = bookId;
-		this.bookName = bookName;
-	}
 	public int getBookId() {
 		return bookId;
 	}
@@ -30,4 +27,12 @@ public class Books {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
+	public Book(int bookId, String bookName) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+	}
+	
+	
+	
 }

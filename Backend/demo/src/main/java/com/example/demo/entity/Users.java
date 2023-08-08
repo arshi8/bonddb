@@ -1,13 +1,18 @@
 package com.example.demo.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table
+@NoArgsConstructor
 public class Users {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private int userId;
 	@Column(name = "user_name")
@@ -16,6 +21,7 @@ public class Users {
 	private String userEmail;
 	@Column(name = "user_role")
 	private String userRole;
+	
 	public Users(int userId, String userName, String userEmail, String userRole) {
 		super();
 		this.userId = userId;
