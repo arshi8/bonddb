@@ -6,15 +6,16 @@ import BookData from '../JSONData1/Book.json'
 import SecurityData from '../JSONData1/Security.json'
 import UserData from '../JSONData1/User.json'
 import { useState } from "react"
+import { getEmail } from "../AuthDetails"
 
 // use for debugging
 console.clear()
 console.log("App Start")
 
-let CurrentUserID = 1001
-let CurrentUser = UserData.find(element => element.Id == CurrentUserID)
+// let CurrentUserID = 1001
+// let CurrentUser = UserData.find(element => element.Id == CurrentUserID)
 
-console.log(CurrentUser)
+// console.log(CurrentUser)
 
 function GroupTradesByBook() {
    let Library = new Map()
@@ -35,12 +36,18 @@ function GroupTradesByBook() {
 //    let TradeDetails = new Map()
 // }
 
-console.log(GroupTradesByBook())
+// console.log(GroupTradesByBook())
 
-function Dashboard() {
+function Dashboard({ authUser }) {
    const [isOpen, setIsOpen] = useState(false);
    const [currentBookId, setCurrentBookID] = useState(0);
    const [error, setError] = useState('');
+
+   if (!authUser) return null;
+
+   // console.log(`inside dashboard `, authUser)
+   let CurrentUser = UserData.find(element => element.Email == authUser.email)
+   // console.log(CurrentUser);
 
    const toggleDropdown = () => {
       setIsOpen(!isOpen);
@@ -100,12 +107,17 @@ function Dashboard() {
                <div className={`dropdown ${isOpen ? 'show' : ''} `}>
                   <button className="btn btn-secondary dropdown-toggle drpdownwdt" type="button" data-toggle="dropdown" onClick={toggleDropdown}>
                      {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. */}
+<<<<<<< Updated upstream
                      Book Selector
+=======
+                     Lorem Ipsum
+>>>>>>> Stashed changes
                   </button>
                   <ul className={`dropdown-menu ${isOpen ? 'show' : ''}`}>
                      {/* <ul className={`dropdown-menu`}> */}
 
                      {BookData.map((item) => (
+<<<<<<< Updated upstream
                         <li key={item.Id}><div className="dropdown-item drpdwnitem" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
                      ))}
                      <li><div className="dropdown-item drpdwnitem" onClick={() => handledropdown(0)}>Show All</div></li>
@@ -140,6 +152,13 @@ function Dashboard() {
                   {/* <p>Selected Date: {selectedDate}</p> */}
                   {/* </div> */}
                </div>
+=======
+                        <li key={item.Id}><div className="dropdown-item" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
+                     ))}
+                  </ul>
+               </div>
+
+>>>>>>> Stashed changes
             </div>
             <div className="tradedetails">
                <div className="listoftrades">

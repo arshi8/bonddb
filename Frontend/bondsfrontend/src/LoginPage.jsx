@@ -3,9 +3,14 @@ import { auth } from './firebase';
 // import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import "./login.css"
+import { withRouter } from 'react-router-dom'; // Import withRouter
 
-const LoginPage = ({ setLoggedInUser }) => {
+
+const LoginPage = ({ setLoggedInUser ,history}) => {
 //   const navigate = useNavigate();
+
+// const history = useHistory(); // Initialize useHistory
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,6 +18,7 @@ const LoginPage = ({ setLoggedInUser }) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password).then( (userCredential)=>{
         console.log(userCredential);
+        history.push('/dashboard');
     }).catch((error)=>{
         console.log(error);
     })
