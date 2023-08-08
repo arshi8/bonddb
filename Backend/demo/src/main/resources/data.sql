@@ -35,8 +35,10 @@ CREATE TABLE bookusers (
     user_id INT,
     book_id INT
 );
-
-
+CREATE TABLE books (
+    book_id INT PRIMARY KEY,
+    book_name VARCHAR(255)
+);
 
 
 
@@ -68,3 +70,9 @@ INSERT INTO bookusers (access_id,user_id, book_id)
 VALUES
     (1,1001, 101),
     (2,2001, 102);
+    
+    
+INSERT INTO books (book_id, book_name)
+VALUES
+    (101, 'ABC'),
+    (102, 'XYZ');
