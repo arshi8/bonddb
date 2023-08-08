@@ -30,6 +30,12 @@ CREATE TABLE users (
     user_email VARCHAR(255),
     user_role VARCHAR(255)
 );
+CREATE TABLE book (
+    access_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    book_id INT
+);
+
 
 
 
@@ -58,3 +64,10 @@ VALUES
     ('User2', 'User2@domain.com', 'Vice President'),
     ('User3', 'User3@domain.com', 'Analyst');
 
+INSERT INTO book (access_id,user_id, book_id)
+VALUES
+    (1,1001, 101),
+    (2,2001, 101),
+    (3,3001, 101),
+    (4,1001, 102),
+    (5,2001, 102);
