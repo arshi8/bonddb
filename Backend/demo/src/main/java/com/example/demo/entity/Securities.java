@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -20,7 +21,7 @@ public class Securities {
 	@Column(name = "security_id")
 	private int securityId;
 	@Column(name = "maturity_date")
-	private LocalDateTime maturityDate;
+	private LocalDate maturityDate;
 	@Column(name = "face_value")
 	private int faceValue;
 	@Column(name = "status")
@@ -40,7 +41,7 @@ public class Securities {
 	@Column(name = "type")
 	private String type;
 	
-	public Securities(int securityId, LocalDateTime maturityDate, int faceValue, String status, String isin,
+	public Securities(int securityId, LocalDate maturityDate, int faceValue, String status, String isin,
 			String cusip, String issuer, String coupon, String type) {
 		super();
 		this.securityId = securityId;
@@ -59,10 +60,10 @@ public class Securities {
 	public void setSecurityId(int securityId) {
 		this.securityId = securityId;
 	}
-	public LocalDateTime getMaturityDate() {
+	public LocalDate getMaturityDate() {
 		return maturityDate;
 	}
-	public void setMaturityDate(LocalDateTime maturityDate) {
+	public void setMaturityDate(LocalDate maturityDate) {
 		this.maturityDate = maturityDate;
 	}
 	public int getFaceValue() {

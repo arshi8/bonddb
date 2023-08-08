@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class SecuritiesService {
 		 return this.securitiesrepo.findByFaceValue(arg);
 	 }
 
-	 public List<Securities> findByMaturityDate(@PathVariable LocalDateTime arg)
+	 public List<Securities> findByMaturityDate(@PathVariable LocalDate arg)
 	 {
 		 
 		 return this.securitiesrepo.findByMaturityDate(arg);

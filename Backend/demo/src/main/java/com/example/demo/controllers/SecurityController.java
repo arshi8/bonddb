@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class SecurityController {
 		 return this.securitiesservice.findByFaceValue(arg);
 	 }
 	@GetMapping("/MaturityDate/{arg}")
-	 public List<Securities> findByMaturityDate(@PathVariable LocalDateTime arg)
+	 public List<Securities> findByMaturityDate(@PathVariable LocalDate arg)
 	 {
 		 
 		 return this.securitiesservice.findByMaturityDate(arg);

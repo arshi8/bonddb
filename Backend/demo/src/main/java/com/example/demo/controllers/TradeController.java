@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class TradeController {
 		 return this.tradesservice.findByStatus(arg);
 	 }
 	@GetMapping("/TradeDate/{arg}")
-	 public List<Trades>findByTradeDate (@PathVariable LocalDateTime arg)
+	 public List<Trades>findByTradeDate (@PathVariable LocalDate arg)
 	 {
 		 
 		 return this.tradesservice.findByTradeDate(arg);

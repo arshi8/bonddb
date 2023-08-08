@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class TradesService {
 		 return this.tradesrepo.findByStatus(arg);
 	 }
 
-	 public List<Trades>findByTradeDate (@PathVariable LocalDateTime arg)
+	 public List<Trades>findByTradeDate (@PathVariable LocalDate arg)
 	 {
 		 
 		 return this.tradesrepo.findByTradeDate(arg);

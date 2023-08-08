@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -29,7 +30,7 @@ public class Trades {
 	@Column(name = "type")
 	private String type;
 	@Column(name = "trade_date")
-	private LocalDateTime tradeDate;
+	private LocalDate tradeDate;
 	@Column(name = "book_id")
 	private int bookId;
 	@Column(name = "counterparty_id")
@@ -37,9 +38,9 @@ public class Trades {
 	@Column(name = "security_id")
 	private int securityId;
 	@Column(name = "settlement_date")
-	private LocalDateTime settlementDate;
-	public Trades(int tradeId, int quantity, String status, int price, String type, LocalDateTime tradeDate, int bookId,
-			int counterPartyId, int securityId, LocalDateTime settlementDate) {
+	private LocalDate settlementDate;
+	public Trades(int tradeId, int quantity, String status, int price, String type, LocalDate tradeDate, int bookId,
+			int counterPartyId, int securityId, LocalDate settlementDate) {
 		super();
 		this.tradeId = tradeId;
 		this.quantity = quantity;
@@ -82,10 +83,10 @@ public class Trades {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public LocalDateTime getTradeDate() {
+	public LocalDate getTradeDate() {
 		return tradeDate;
 	}
-	public void setTradeDate(LocalDateTime tradeDate) {
+	public void setTradeDate(LocalDate tradeDate) {
 		this.tradeDate = tradeDate;
 	}
 	public int getBookId() {
@@ -106,10 +107,10 @@ public class Trades {
 	public void setSecurityId(int securityId) {
 		this.securityId = securityId;
 	}
-	public LocalDateTime getSettlementDate() {
+	public LocalDate getSettlementDate() {
 		return settlementDate;
 	}
-	public void setSettlementDate(LocalDateTime settlementDate) {
+	public void setSettlementDate(LocalDate settlementDate) {
 		this.settlementDate = settlementDate;
 	}
 	
