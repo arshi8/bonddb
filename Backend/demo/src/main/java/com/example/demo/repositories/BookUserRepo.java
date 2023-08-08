@@ -13,5 +13,7 @@ import java.time.LocalDateTime;
 @Repository
 public interface BookUserRepo extends JpaRepository<BookUsers, Integer> {
 	List<BookUsers> findByBookId(int bookId);
-	List<BookUsers> findByUserId(int userId);	
+	List<BookUsers> findByUserId(int userId);
+	
+	
 }
