@@ -24,6 +24,15 @@ CREATE TABLE trades (
     coupon VARCHAR(255),
     type VARCHAR(255)
 );
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(255),
+    user_email VARCHAR(255),
+    user_role VARCHAR(255)
+);
+
+
+
 
 INSERT INTO trades (quantity, status, price, type, trade_date, book_id, counterparty_id, security_id, settlement_date)
 VALUES
@@ -43,4 +52,9 @@ VALUES
     ('2023-07-24T00:00:00', 80, 'Matured', 'UK123456A78E', '123456124', 'Barclays', 'CPNCD004', 'CORP'),
     ('2022-12-25T00:00:00', 50, 'Matured', 'HK123456A78F', '123456125', 'HSBC', 'CPNCD005', 'CORP');
 
+INSERT INTO users (user_name, user_email, user_role)
+VALUES
+    ('User1', 'User1@domain.com', 'Director'),
+    ('User2', 'User2@domain.com', 'Vice President'),
+    ('User3', 'User3@domain.com', 'Analyst');
 

@@ -9,7 +9,6 @@ import com.example.demo.entity.Users;
 
 @Repository
 public interface UsersRepo extends JpaRepository<Users, Integer> {
-	List<Users> findByUserEmail(String userEmail);
-	List<Users> findByUserId(int userId);
+	
 	
 }
