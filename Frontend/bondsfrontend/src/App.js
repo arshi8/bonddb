@@ -8,7 +8,6 @@ import AuthDetails from './AuthDetails';
 import { BrowserRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import { useState } from 'react';
 // function App() {
 //   return (
 //     <>
@@ -19,16 +18,14 @@ import { useState } from 'react';
 // }
 
 function App() {
-
-  const [authUser,setAuthUser] = useState(null);
   return (
    <>
    <Routes>
-        <Route path = '/' element={<Dashboard authUser={authUser}/>}/>
         <Route path = '/login' element={<LoginPage/>}/>
         <Route path = '/signup' element={<SignUpPage/>}/>
+        <Route path = '/dashboard' element={<Dashboard/>}/>
    </Routes>
-   < AuthDetails authUser={authUser} setAuthUser={setAuthUser}/>
+   < AuthDetails/>
    
    </>
   );

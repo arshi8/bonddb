@@ -11,11 +11,8 @@ import { useState } from "react"
 console.clear()
 console.log("App Start")
 
-
-function Dashboard({authUser}) {
-
-   // let CurrentUserID = 1001
-let CurrentUser = UserData.find(element => element.Email === authUser.email)
+let CurrentUserID = 1001
+let CurrentUser = UserData.find(element => element.Id == CurrentUserID)
 
 console.log(CurrentUser)
 
@@ -40,7 +37,7 @@ function GroupTradesByBook() {
 
 console.log(GroupTradesByBook())
 
-
+function Dashboard() {
    const [isOpen, setIsOpen] = useState(false);
    const [currentBookId, setCurrentBookID] = useState(0);
    const [error, setError] = useState('');
