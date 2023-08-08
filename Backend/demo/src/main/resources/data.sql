@@ -1,48 +1,46 @@
-
 CREATE TABLE trades (
-    trade_id INT PRIMARY KEY,
+    trade_id INT AUTO_INCREMENT PRIMARY KEY,
     quantity INT,
     status VARCHAR(255),
     price INT,
     type VARCHAR(255),
-    trade_date TIMESTAMP,
-    book_id INT
+    trade_date DATETIME,
+    book_id INT,
+    counterparty_id INT,
+    security_id INT,
+    settlement_date DATETIME
 );
-  
-  
-CREATE TABLE securities (
-    security_id INT PRIMARY KEY,
-    maturity_date TIMESTAMP,
+
+
+
+  CREATE TABLE securities (
+    security_id INT AUTO_INCREMENT PRIMARY KEY,
+    maturity_date DATETIME,
     face_value INT,
-    status VARCHAR(255)
+    status VARCHAR(255),
+    isin VARCHAR(255),
+    cusip VARCHAR(255),
+    issuer VARCHAR(255),
+    coupon VARCHAR(255),
+    type VARCHAR(255)
 );
 
-INSERT INTO trades (trade_id, quantity, status, price, type, trade_date, book_id)
+INSERT INTO trades (quantity, status, price, type, trade_date, book_id, counterparty_id, security_id, settlement_date)
 VALUES
-    (1, 250, 'ACTIVE', 90, 'SELL', '2023-08-07 19:45:30', 122),
-(2, 150, 'ACTIVE', 60, 'SELL', '2023-08-07 16:45:30', 124),
-    (3, 75, 'PENDING', 80, 'BUY', '2023-08-07 17:15:00', 125),
-    (4, 200, 'ACTIVE', 70, 'SELL', '2023-08-07 18:00:00', 126),
-    (5, 50, 'ACTIVE', 90, 'BUY', '2023-08-07 19:30:00', 127),
-    (6, 120, 'INACTIVE', 55, 'SELL', '2023-08-08 10:00:00', 128),
-    (7, 80, 'ACTIVE', 75, 'BUY', '2023-08-08 11:45:00', 129),
-    (8, 300, 'PENDING', 100, 'SELL', '2023-08-08 13:15:00', 130),
-    (9, 150, 'ACTIVE', 85, 'BUY', '2023-08-08 14:30:00', 131),
-    (10, 200, 'ACTIVE', 70, 'SELL', '2023-08-08 15:45:00', 132);
-    
+    (2, 'Settled', 200, 'Buy', '2021-01-01T00:00:00', 102, 1001, 1001, '2023-06-01T00:00:00'),
+    (3, 'Not-Settled', 150, 'Sell', '2023-04-20T00:00:00', 101, 1002, 1003, '2023-12-20T00:00:00'),
+    (6, 'Settled', 450, 'Buy', '2020-10-30T00:00:00', 101, 1002, 1002, '2022-10-30T00:00:00'),
+    (5, 'Settled', 400, 'Sell', '2022-05-25T00:00:00', 102, 1003, 1004, '2023-03-10T00:00:00'),
+    (18, 'Not-Settled', 900, 'Buy', '2020-12-15T00:00:00', 101, 1001, 1005, '2024-12-15T00:00:00');
     
 
 
-INSERT INTO securities (security_id, maturity_date, face_value, status)
+INSERT INTO securities (maturity_date, face_value, status, isin, cusip, issuer, coupon, type)
 VALUES
-    (1, '2023-08-15 00:00:00', 1000, 'ACTIVE'),
-    (2, '2024-06-30 00:00:00', 1500, 'PENDING'),
-    (3, '2025-01-20 00:00:00', 800, 'ACTIVE'),
-    (4, '2024-12-10 00:00:00', 1200, 'INACTIVE'),
-    (5, '2023-11-05 00:00:00', 900, 'ACTIVE'),
-    (6, '2025-03-18 00:00:00', 1300, 'PENDING'),
-    (7, '2024-08-22 00:00:00', 1100, 'ACTIVE'),
-    (8, '2025-02-28 00:00:00', 1600, 'INACTIVE'),
-    (9, '2023-09-12 00:00:00', 950, 'ACTIVE'),
-    (10, '2024-07-10 00:00:00', 1400, 'PENDING');
+    ('2023-08-02T00:00:00', 100, 'Matured', 'IN123456A78B', '123456121', 'Reserve Bank Of India', 'CPNCD001', 'GOVT'),
+    ('2023-08-12T00:00:00', 75, 'Not-Matured', 'US123456A78C', '123456122', 'Morgan Stanley', 'CPNCD002', 'CORP'),
+    ('2023-06-12T00:00:00', 50, 'Matured', 'US123456A78D', '123456123', 'Bank Of America', 'CPNCD003', 'GOVT'),
+    ('2023-07-24T00:00:00', 80, 'Matured', 'UK123456A78E', '123456124', 'Barclays', 'CPNCD004', 'CORP'),
+    ('2022-12-25T00:00:00', 50, 'Matured', 'HK123456A78F', '123456125', 'HSBC', 'CPNCD005', 'CORP');
+
 

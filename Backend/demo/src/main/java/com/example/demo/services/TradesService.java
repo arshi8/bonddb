@@ -21,6 +21,7 @@ public class TradesService {
 		super();
 	
 	}
+
 	
 
 	 public List<Trades> findByTradeId(@PathVariable int arg)
