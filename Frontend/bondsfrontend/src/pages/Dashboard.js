@@ -6,16 +6,15 @@ import BookData from '../JSONData1/Book.json'
 import SecurityData from '../JSONData1/Security.json'
 import UserData from '../JSONData1/User.json'
 import { useState } from "react"
-import { getEmail } from "../AuthDetails"
 
 // use for debugging
 console.clear()
 console.log("App Start")
 
-// let CurrentUserID = 1001
-// let CurrentUser = UserData.find(element => element.Id == CurrentUserID)
+let CurrentUserID = 1001
+let CurrentUser = UserData.find(element => element.Id == CurrentUserID)
 
-// console.log(CurrentUser)
+console.log(CurrentUser)
 
 function GroupTradesByBook() {
    let Library = new Map()
@@ -36,18 +35,12 @@ function GroupTradesByBook() {
 //    let TradeDetails = new Map()
 // }
 
-// console.log(GroupTradesByBook())
+console.log(GroupTradesByBook())
 
-function Dashboard({ authUser }) {
+function Dashboard() {
    const [isOpen, setIsOpen] = useState(false);
    const [currentBookId, setCurrentBookID] = useState(0);
    const [error, setError] = useState('');
-
-   if (!authUser) return null;
-
-   // console.log(`inside dashboard `, authUser)
-   let CurrentUser = UserData.find(element => element.Email == authUser.email)
-   // console.log(CurrentUser);
 
    const toggleDropdown = () => {
       setIsOpen(!isOpen);
@@ -113,11 +106,40 @@ function Dashboard({ authUser }) {
                      {/* <ul className={`dropdown-menu`}> */}
 
                      {BookData.map((item) => (
-                        <li key={item.Id}><div className="dropdown-item" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
+                        <li key={item.Id}><div className="dropdown-item drpdwnitem" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
                      ))}
+                     <li><div className="dropdown-item drpdwnitem" onClick={() => handledropdown(0)}>Show All</div></li>
                   </ul>
                </div>
+               <div className="dateselectors">
+                  {/* <div className="container mt-5"> */}
+                  {/* <h2>Date Selector using Bootstrap</h2> */}
 
+                  <div className="form-group">
+                     <label>From:</label>
+                     <input
+                        type="date"
+                        className="form-control"
+                        value={selectedFromDate}
+                        onChange={handleFromDateChange}
+                        onBlur={validateDateRange}
+                     />
+                  </div>
+                  <div className="form-group">
+                     <label>To:</label>
+                     <input
+                        type="date"
+                        className="form-control"
+                        value={selectedToDate}
+                        onChange={handleToDateChange}
+                        onBlur={validateDateRange}
+                     />
+                  </div>
+                  {error && <p className="text-danger">{error}</p>}
+                  <button type="button" class="btn btn-dark" onClick={getSelectedtrades}>Get trades</button>
+                  {/* <p>Selected Date: {selectedDate}</p> */}
+                  {/* </div> */}
+               </div>
             </div>
             <div className="tradedetails">
                <div className="listoftrades">
