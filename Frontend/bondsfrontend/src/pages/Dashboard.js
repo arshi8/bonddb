@@ -3,7 +3,7 @@ import TradeData from '../JSONData1/Trade.json'
 import BookData from '../JSONData1/Book.json'
 // import BookUserData from '../JSONData1/BookUser.json'
 // import CounterPartyData from '../JSONData1/CounterParty.json'
-// import SecurityData from '../JSONData1/Security.json'
+import SecurityData from '../JSONData1/Security.json'
 import UserData from '../JSONData1/User.json'
 import { useState } from "react"
 
@@ -51,29 +51,39 @@ function Dashboard() {
       // console.log(option);
 
    }
+
    const [selectedFromDate, setSelectedFromDate] = useState('');
 
-   const handleFromDateChange = (event) => {
+   function handleFromDateChange(event) {
       setSelectedFromDate(event.target.value);
       setError('');
    };
    const [selectedToDate, setSelectedToDate] = useState('');
 
-   const handleToDateChange = (event) => {
+   function handleToDateChange(event) {
       setSelectedToDate(event.target.value);
       // setError('');
    };
 
-   const validateDateRange = () => {
+   function validateDateRange() {
       if (selectedFromDate && selectedToDate) {
-        if (new Date(selectedToDate) < new Date(selectedFromDate)) {
-          setError('To date must be greater than from date');
-        } else {
-         //  setError('');
-        }
+         if (new Date(selectedToDate) < new Date(selectedFromDate)) {
+            setError('To date must be greater than from date');
+         } else {
+            //  setError('');
+         }
       }
-    };
+   };
 
+   const filteredItems = SecurityData.filter((item) => {
+      const itemDate = new Date(item.MaturityDate);
+      const from = new Date(selectedFromDate);
+      const to = new Date(selectedToDate);
+      return itemDate >= from && itemDate <= to;
+    });
+   function getSelectedtrades() {
+
+   }
 
    return (
       <>
@@ -90,14 +100,15 @@ function Dashboard() {
                <div className={`dropdown ${isOpen ? 'show' : ''} `}>
                   <button className="btn btn-secondary dropdown-toggle drpdownwdt" type="button" data-toggle="dropdown" onClick={toggleDropdown}>
                      {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. */}
-                     Lorem Ipsum
+                     Book Selector
                   </button>
                   <ul className={`dropdown-menu ${isOpen ? 'show' : ''}`}>
                      {/* <ul className={`dropdown-menu`}> */}
 
                      {BookData.map((item) => (
-                        <li key={item.Id}><div className="dropdown-item" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
+                        <li key={item.Id}><div className="dropdown-item drpdwnitem" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
                      ))}
+                     <li><div className="dropdown-item drpdwnitem" onClick={() => handledropdown(0)}>Show All</div></li>
                   </ul>
                </div>
                <div className="dateselectors">
@@ -125,6 +136,7 @@ function Dashboard() {
                      />
                   </div>
                   {error && <p className="text-danger">{error}</p>}
+                  <button type="button" class="btn btn-dark" onClick={getSelectedtrades}>Get trades</button>
                   {/* <p>Selected Date: {selectedDate}</p> */}
                   {/* </div> */}
                </div>
@@ -175,6 +187,38 @@ function Dashboard() {
                   </table>
                </div>
                <div className="selectedtradedetails">
+                  <table className="table table-striped-columns">
+                     <thead>
+
+                        <tr>
+                           <th scope="col">Id</th>
+                           <th scope="col">ISIN</th>
+                           <th scope="col">CUSIP</th>
+                           <th scope="col">Issuer</th>
+                           <th scope="col">MaturityDatey</th>
+                           <th scope="col">Coupon</th>
+                           <th scope="col">Type</th>
+                           <th scope="col">FaceValue</th>
+                           <th scope="col">Status</th>
+                           {/* <th scope="col">SettlementDate</th> */}
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {filteredItems.map((item) => (
+                           <tr key={item.Id}>
+                              <th scope="row">{item.Id}</th>
+                              <td>{item.ISIN}</td>
+                              <td>{item.CUSIP}</td>
+                              <td>{item.Issuer}</td>
+                              <td>{item.MaturityDate}</td>
+                              <td>{item.Coupon}</td>
+                              <td>{item.Type}</td>
+                              <td>{item.FaceValue}</td>
+                              <td>{item.Status}</td>
+                           </tr>
+                        ))}
+                     </tbody>
+                  </table>
                </div>
             </div>
          </div>
