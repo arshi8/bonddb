@@ -107,58 +107,17 @@ function Dashboard({ authUser }) {
                <div className={`dropdown ${isOpen ? 'show' : ''} `}>
                   <button className="btn btn-secondary dropdown-toggle drpdownwdt" type="button" data-toggle="dropdown" onClick={toggleDropdown}>
                      {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. */}
-<<<<<<< Updated upstream
-                     Book Selector
-=======
                      Lorem Ipsum
->>>>>>> Stashed changes
                   </button>
                   <ul className={`dropdown-menu ${isOpen ? 'show' : ''}`}>
                      {/* <ul className={`dropdown-menu`}> */}
 
                      {BookData.map((item) => (
-<<<<<<< Updated upstream
-                        <li key={item.Id}><div className="dropdown-item drpdwnitem" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
-                     ))}
-                     <li><div className="dropdown-item drpdwnitem" onClick={() => handledropdown(0)}>Show All</div></li>
-                  </ul>
-               </div>
-               <div className="dateselectors">
-                  {/* <div className="container mt-5"> */}
-                  {/* <h2>Date Selector using Bootstrap</h2> */}
-
-                  <div className="form-group">
-                     <label>From:</label>
-                     <input
-                        type="date"
-                        className="form-control"
-                        value={selectedFromDate}
-                        onChange={handleFromDateChange}
-                        onBlur={validateDateRange}
-                     />
-                  </div>
-                  <div className="form-group">
-                     <label>To:</label>
-                     <input
-                        type="date"
-                        className="form-control"
-                        value={selectedToDate}
-                        onChange={handleToDateChange}
-                        onBlur={validateDateRange}
-                     />
-                  </div>
-                  {error && <p className="text-danger">{error}</p>}
-                  <button type="button" class="btn btn-dark" onClick={getSelectedtrades}>Get trades</button>
-                  {/* <p>Selected Date: {selectedDate}</p> */}
-                  {/* </div> */}
-               </div>
-=======
                         <li key={item.Id}><div className="dropdown-item" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
                      ))}
                   </ul>
                </div>
 
->>>>>>> Stashed changes
             </div>
             <div className="tradedetails">
                <div className="listoftrades">
