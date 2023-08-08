@@ -59,5 +59,8 @@ public class SecuritiesService {
 		// TODO Auto-generated method stub
 		 return this.securitiesrepo.findAll();
 	}
+	public List<Securities> findByMaturityDateBetween(LocalDate startDate, LocalDate endDate) {
+        return this.securitiesrepo.findByMaturityDateBetween(startDate, endDate);
+    }
 
 }
