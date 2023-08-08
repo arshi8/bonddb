@@ -7,8 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
+
 @Entity
-@Table
+@Table(name="bookusers")
 @NoArgsConstructor
 public class BookUsers {
 	@Id
@@ -19,12 +20,6 @@ public class BookUsers {
 	private int userId;
 	@Column(name = "book_id")
 	private int bookId;
-	public BookUsers(int accessId, int userId, int bookId) {
-		super();
-		this.accessId = accessId;
-		this.userId = userId;
-		this.bookId = bookId;
-	}
 	public int getAccessId() {
 		return accessId;
 	}
@@ -43,6 +38,13 @@ public class BookUsers {
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
+	public BookUsers(int accessId, int userId, int bookId) {
+		super();
+		this.accessId = accessId;
+		this.userId = userId;
+		this.bookId = bookId;
+	}
+	
 	
 
 }
