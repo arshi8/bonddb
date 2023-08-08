@@ -20,9 +20,9 @@ const SignUpPage = ({ setLoggedInUser }) => {
   return (
     <div className='l1'>
       <h1 className='l2'>create Account</h1>
-      <input className='l3'type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-      <input className='l4' type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-      <button className='l5' onClick={signUp}>signUp</button>
+      <input className='emailField'type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+      <input className='passwordField' type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+      <button className='LoginButton' onClick={signUp}>signUp</button>
     </div>
   );
 };
