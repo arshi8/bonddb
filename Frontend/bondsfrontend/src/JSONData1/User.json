@@ -16,11 +16,5 @@
         "Name":"User3",
         "Email":"User3@domain.com",
         "Role": "Analyst"
-    },
-    {
-        "Id":3001,
-        "Name":"User3",
-        "Email":"himanshu12345@gmail.com",
-        "Role": "Analyst"
     }
 ]
