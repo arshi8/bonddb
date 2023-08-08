@@ -22,9 +22,12 @@
     margin:1vh;
     background-color: yellowgreen;
 }
+.drpdownwdt{
+    width:60vw;
+}
 .bookselector{
     height:100%;
-    width:100%;
+    width:50vw;
     display: flex;
     justify-content: center;
     align-items: center;

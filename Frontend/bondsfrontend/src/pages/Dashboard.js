@@ -1,10 +1,11 @@
 import "./Dashboard.css"
 import TradeData from '../JSONData1/Trade.json'
 import BookData from '../JSONData1/Book.json'
-import BookUserData from '../JSONData1/BookUser.json'
-import CounterPartyData from '../JSONData1/CounterParty.json'
-import SecurityData from '../JSONData1/Security.json'
+// import BookUserData from '../JSONData1/BookUser.json'
+// import CounterPartyData from '../JSONData1/CounterParty.json'
+// import SecurityData from '../JSONData1/Security.json'
 import UserData from '../JSONData1/User.json'
+import { useState } from "react"
 
 // use for debugging
 console.clear()
@@ -15,14 +16,14 @@ let CurrentUser = UserData.find(element => element.Id == CurrentUserID)
 
 console.log(CurrentUser)
 
-function GroupTradesByBook(){
+function GroupTradesByBook() {
    let Library = new Map()
 
    TradeData.forEach(element => {
-      if(Library.has(element.BookId)){
+      if (Library.has(element.BookId)) {
          Library.get(element.BookId).push(element)
-      }else{
-         Library.set(element.BookId,[element])
+      } else {
+         Library.set(element.BookId, [element])
       }
    })
    // returns a key value pair of (Book ID) => (List of Trades of that book)
@@ -37,7 +38,19 @@ function GroupTradesByBook(){
 console.log(GroupTradesByBook())
 
 function Dashboard() {
-   
+   const [isOpen, setIsOpen] = useState(false);
+   const [currentBookId, setCurrentBookID] = useState(0);
+
+   const toggleDropdown = () => {
+     setIsOpen(!isOpen);
+   };
+
+   function handledropdown(option){
+      setCurrentBookID(option);
+      // console.log(option);
+
+   }
+
 
    return (
       <>
@@ -47,16 +60,30 @@ function Dashboard() {
                <h2 id="userid">{CurrentUser.Id}</h2>
                <h2 id="userrole">{CurrentUser.Role}</h2>
                <h2 id="useremail">{CurrentUser.Email}</h2>
-               <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" width="40px"/>
+               <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" width="40px" />
             </div>
             <div className="bookselector">
-               <h1>book selector</h1>
+               {/* <h1>book selector</h1> */}
+               <div className={`dropdown ${isOpen ? 'show' : ''} `}>
+                  <button className="btn btn-secondary dropdown-toggle drpdownwdt" type="button" data-toggle="dropdown" onClick={toggleDropdown}>
+                  {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. */}
+                  Lorem Ipsum 
+                  </button>
+                  <ul className={`dropdown-menu ${isOpen ? 'show' : ''}`}>
+                  {/* <ul className={`dropdown-menu`}> */}
+
+                  {BookData.map((item) => (
+                     <li key={item.Id}><div className="dropdown-item" onClick={() => handledropdown(item.Id)}>{item.BookName}</div></li>
+                        ))}
+                  </ul>
+               </div>
+              
             </div>
             <div className="tradedetails">
                <div className="listoftrades">
-                  <table class="table table-striped-columns">
+                  <table className="table table-striped-columns">
                      <thead>
-                        
+
                         <tr>
                            <th scope="col">Id</th>
                            <th scope="col">Book Id</th>
@@ -77,8 +104,9 @@ function Dashboard() {
                            <td>Otto</td>
                            <td>@mdo</td>
                         </tr> */}
-                        {TradeData.map((item) =>(
-                           <tr>
+                        {TradeData.map((item) => (
+                           currentBookId === 0 || currentBookId === item.BookId ? (
+                           <tr key={item.Id}>
                               <th scope="row">{item.Id}</th>
                               <td>{item.BookId}</td>
                               <td>{item.CounterpartyId}</td>
@@ -91,13 +119,14 @@ function Dashboard() {
                               <td>{item.SettlementDate}</td>
 
                            </tr>
+                           ): null
                         ))}
                      </tbody>
                   </table>
                </div>
                <div className="selectedtradedetails">
                </div>
-            </div>
+            </div> 
          </div>
       </>
    )
