@@ -2,8 +2,8 @@ import React ,{useEffect,useState}from "react";
 import { auth } from "./firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import "./login.css"
-const AuthDetails = ()=>{
-    const [authUser,setAuthUser] = useState(null);
+const AuthDetails = ({authUser,setAuthUser})=>{
+    // const [authUser,setAuthUser] = useState(null);
     useEffect(()=>{
         const listen = onAuthStateChanged(auth,(user)=>{
             if(user){
