@@ -15,7 +15,7 @@
         "ISIN": "US123456A78C",
         "CUSIP": 123456122,
         "Issuer": "Morgan Stanley",
-        "MaturityDate": "2023-08-12",
+        "MaturityDate": "2023-07-12",
         "Coupon": "CPNCD002",
         "Type": "CORP",
         "FaceValue": 75,

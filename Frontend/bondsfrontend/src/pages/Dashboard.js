@@ -118,6 +118,9 @@ function Dashboard() {
                   {/* <h2>Date Selector using Bootstrap</h2> */}
 
                   <div className="form-group">
+                     <br></br>
+                     <label>Find Securities</label>
+                     <br></br>
                      <label>From:</label>
                      <input
                         type="date"
@@ -138,7 +141,7 @@ function Dashboard() {
                      />
                   </div>
                   {error && <p className="text-danger">{error}</p>}
-                  <button type="button" className="submitButton" class="btn btn-dark" onClick={getSelectedtrades}>Get trades</button>
+                  {/* <button type="button" className="submitButton" class="btn btn-dark" onClick={getSelectedtrades}>Get trades</button> */}
                   {/* <p>Selected Date: {selectedDate}</p> */}
                   {/* </div> */}
                </div>
@@ -198,7 +201,7 @@ function Dashboard() {
                         <th scope="col">ISIN</th>
                         <th scope="col">CUSIP</th>
                         <th scope="col">Issuer</th>
-                        <th scope="col">MaturityDatey</th>
+                        <th scope="col">MaturityDate</th>
                         <th scope="col">Coupon</th>
                         <th scope="col">Type</th>
                         <th scope="col">FaceValue</th>

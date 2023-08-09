@@ -5,20 +5,26 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import "./login.css"
 import Logo_gmnc from "./icons/Logo_gmnc.svg"
 import ProfileFace from "./icons/Profile_gmnc.png"
+// import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const LoginPage = ({ setLoggedInUser }) => {
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const logIn = (e)=>{
+    // const navigate = useNavigate();
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password).then( (userCredential)=>{
         console.log(userCredential);
     }).catch((error)=>{
         console.log(error);
     })
+    navigate('/dashboard');
   }
+
 
   return (
     <body>
@@ -32,9 +38,10 @@ const LoginPage = ({ setLoggedInUser }) => {
 				<input className="emailField" type="text" placeholder=" Email" value={email} onChange={e => setEmail(e.target.value)}/>
 				<input className="passwordField" type="password" placeholder=" Password" value={password} onChange={e => setPassword(e.target.value)}/>
 				<button className="loginButton" onClick={logIn}>Login</button>
+        <div className='signup-link'>Don't have an account yet? <Link to="/signup">Create one.</Link></div>
 			</div>
 		</div>
-
+    
 		
     </body>
     // <div class="main">
