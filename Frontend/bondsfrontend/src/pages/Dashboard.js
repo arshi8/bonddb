@@ -190,39 +190,39 @@ function Dashboard() {
                </div>
             </div>
             <div className="selectedtradedetails">
-                  <table className="table table-striped-columns">
-                     <thead>
+               <table className="table table-striped-columns">
+                  <thead>
 
-                        <tr>
-                           <th scope="col">Id</th>
-                           <th scope="col">ISIN</th>
-                           <th scope="col">CUSIP</th>
-                           <th scope="col">Issuer</th>
-                           <th scope="col">MaturityDatey</th>
-                           <th scope="col">Coupon</th>
-                           <th scope="col">Type</th>
-                           <th scope="col">FaceValue</th>
-                           <th scope="col">Status</th>
-                           {/* <th scope="col">SettlementDate</th> */}
+                     <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">ISIN</th>
+                        <th scope="col">CUSIP</th>
+                        <th scope="col">Issuer</th>
+                        <th scope="col">MaturityDatey</th>
+                        <th scope="col">Coupon</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">FaceValue</th>
+                        <th scope="col">Status</th>
+                        {/* <th scope="col">SettlementDate</th> */}
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {filteredItems.map((item) => (
+                        <tr key={item.Id}>
+                           <th scope="row">{item.Id}</th>
+                           <td>{item.ISIN}</td>
+                           <td>{item.CUSIP}</td>
+                           <td>{item.Issuer}</td>
+                           <td>{item.MaturityDate}</td>
+                           <td>{item.Coupon}</td>
+                           <td>{item.Type}</td>
+                           <td>{item.FaceValue}</td>
+                           <td>{item.Status}</td>
                         </tr>
-                     </thead>
-                     <tbody>
-                        {filteredItems.map((item) => (
-                           <tr key={item.Id}>
-                              <th scope="row">{item.Id}</th>
-                              <td>{item.ISIN}</td>
-                              <td>{item.CUSIP}</td>
-                              <td>{item.Issuer}</td>
-                              <td>{item.MaturityDate}</td>
-                              <td>{item.Coupon}</td>
-                              <td>{item.Type}</td>
-                              <td>{item.FaceValue}</td>
-                              <td>{item.Status}</td>
-                           </tr>
-                        ))}
-                     </tbody>
-                  </table>
-               </div>
+                     ))}
+                  </tbody>
+               </table>
+            </div>
          </div>
       </body>
    )
