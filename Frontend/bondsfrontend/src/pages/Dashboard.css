@@ -1,6 +1,33 @@
-.checkcolour{
-    color: var(--CustDBblue);
+body{
+    background-color: #303030;
 }
+
+.header{
+	background-color: #767676;
+	padding: 10px;
+	display: flex;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+}
+
+.userDetails{
+    padding-left: 40px;
+	padding-top: 10px;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-weight: bolder;
+	font-size: 52px;
+	color: #303030;
+    position: absolute;
+    right: 100px;
+}
+
+.logoutButton{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
 .main{
     height:100%;
     width:100%;
@@ -13,16 +40,34 @@
     align-items: center;
     overflow-x: hidden;
 }
-.userdetails{
-    height:100%;
-    width:100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: solid black;
-    margin:1vh;
-    background-color: yellowgreen;
+
+.bookselector{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    top: 110px;
+    width: 250px;
+    border-radius: 25px;
+    height: auto;
+    background-color: #767676;
 }
+
+.bookHeading{
+	background-color: #AAAAAA;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-weight: bold;
+	font-size: 36px;
+    padding-top: 15px;
+    padding-left: 70px;
+	color: #303030;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 80px;
+    border-radius: 25px;
+}
+
+/* 
 .bookselector{
     height:100%;
     width:100%;
@@ -30,15 +75,47 @@
     justify-content: center;
     align-items: center;
     border: solid black;
-    margin:1vh;
     background-color: yellowgreen;
+} */
+
+.dropdown{
+    position: absolute;
+    left: 10px;
+    top: 100px;
+}
+
+.dateselectors{
+    position: absolute;
+    left: 10px;
+    top: 140px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.submitButton{
+    border-radius: 30px;
+	width: 150px;
+	height: 35px;
+	position: absolute;
+	top: 150px;
+	left: 30px;
+	transition: background-color 0.3s;
+	cursor: pointer;
+	border: none;
+}
+
+.submitButton:hover{
+	background-color: #8e8e8e;
 }
 
 .tradedetails{
-    height:70vh;
-    width:100%;
-    border: solid blue;
-    margin:1vh;
+    position: absolute;
+    left: 270px;
+    right: 10px;
+    top: 110px;
+    width: calc(100% - 280px);
     display: flex;
     flex-direction: row;
 }

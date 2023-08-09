@@ -6,6 +6,8 @@ import BookData from '../JSONData1/Book.json'
 import SecurityData from '../JSONData1/Security.json'
 import UserData from '../JSONData1/User.json'
 import { useState } from "react"
+import Logo_gmnc from "../icons/Logo_gmnc.png"
+import logout_btn from "../icons/logout.png"
 
 // use for debugging
 console.clear()
@@ -86,21 +88,21 @@ function Dashboard() {
    }
 
    return (
-      <>
+      <body>
+         <div className="header">
+            <img className="companyLogo" src={Logo_gmnc} width={80} height={80}/>
+            <h1 className="userDetails">Hey! {CurrentUser.Name}#{CurrentUser.Id}</h1>
+            <img className="logoutButton" src={logout_btn} width={80} height={80}/>
+         </div>
          <div className="main">
-            <div className="userdetails">
-               <h2 id="usergreeting">Welcome, {CurrentUser.Name}!</h2>
-               <h2 id="userid">{CurrentUser.Id}</h2>
-               <h2 id="userrole">{CurrentUser.Role}</h2>
-               <h2 id="useremail">{CurrentUser.Email}</h2>
-               <img src="https://cdn-icons-png.flaticon.com/512/126/126467.png" width="40px" />
-            </div>
             <div className="bookselector">
                {/* <h1>book selector</h1> */}
+               <div className="bookHeading">Books</div>
+               
                <div className={`dropdown ${isOpen ? 'show' : ''} `}>
                   <button className="btn btn-secondary dropdown-toggle drpdownwdt" type="button" data-toggle="dropdown" onClick={toggleDropdown}>
                      {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. */}
-                     Lorem Ipsum
+                     Select Book
                   </button>
                   <ul className={`dropdown-menu ${isOpen ? 'show' : ''}`}>
                      {/* <ul className={`dropdown-menu`}> */}
@@ -136,7 +138,7 @@ function Dashboard() {
                      />
                   </div>
                   {error && <p className="text-danger">{error}</p>}
-                  <button type="button" class="btn btn-dark" onClick={getSelectedtrades}>Get trades</button>
+                  <button type="button" className="submitButton" class="btn btn-dark" onClick={getSelectedtrades}>Get trades</button>
                   {/* <p>Selected Date: {selectedDate}</p> */}
                   {/* </div> */}
                </div>
@@ -186,7 +188,8 @@ function Dashboard() {
                      </tbody>
                   </table>
                </div>
-               <div className="selectedtradedetails">
+            </div>
+            <div className="selectedtradedetails">
                   <table className="table table-striped-columns">
                      <thead>
 
@@ -220,9 +223,8 @@ function Dashboard() {
                      </tbody>
                   </table>
                </div>
-            </div>
          </div>
-      </>
+      </body>
    )
 }
 export default Dashboard
